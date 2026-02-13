@@ -37,7 +37,7 @@ def _metal_scaled_mm(input, other, *, out_dtype=None, scale_a=None, scale_b=None
             use_fast_accum=use_fast_accum,
         )
 
-    import fp8_mps_native
+    from . import fp8_mps_native
 
     # Handle FP8 dtype tensors by viewing as uint8
     if input.dtype != torch.uint8:

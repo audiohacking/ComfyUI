@@ -83,14 +83,14 @@ def fp8_scaled_mm(A: torch.Tensor, B: torch.Tensor,
             A, B, C, scale_a, scale_b,
             N, K, scale_mode,
             threads=(total_threads,), group_size=(threads_per_group,),
-                    )
+        )
     else:
         # General 2D matmul
         lib.fp8_scaled_matmul_kernel(
             A, B, C, scale_a, scale_b,
             M, N, K, scale_mode,
             threads=(N, M), group_size=(16, 16),
-                    )
+        )
 
     return C
 
@@ -115,7 +115,7 @@ def fp8_dequantize(input: torch.Tensor, scale: torch.Tensor) -> torch.Tensor:
         input.contiguous().view(-1), output.view(-1),
         count,
         threads=(count,), group_size=(256,),
-            )
+    )
 
     # Apply scale
     scale_val = scale.to(device="mps", dtype=torch.float16)
@@ -150,7 +150,7 @@ def fp8_quantize(input: torch.Tensor):
         scaled.view(-1), output.view(-1),
         count,
         threads=(count,), group_size=(256,),
-            )
+    )
 
     inv_scale = torch.tensor([1.0 / scale], dtype=torch.float32, device="mps")
     return output, inv_scale
