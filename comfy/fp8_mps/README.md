@@ -32,4 +32,4 @@ This integration is based on [tashiscool/fp8-mps-metal](https://github.com/tashi
 
 ## License
 
-Original code from fp8-mps-metal repository. ComfyUI is licensed under GPLv3.
+The core fp8-mps-metal code (fp8_mps_patch.py, fp8_mps_native.py, fp8_matmul.metal) is licensed under the MIT License. See the LICENSE file in this directory for details. The integration code (__init__.py) is part of ComfyUI and licensed under GPLv3.
