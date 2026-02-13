@@ -129,6 +129,13 @@ try:
     if torch.backends.mps.is_available():
         cpu_state = CPUState.MPS
         import torch.mps
+        # Initialize FP8 MPS patch for Apple Silicon support
+        try:
+            import comfy.fp8_mps
+            comfy.fp8_mps.install()
+            logging.info("FP8 MPS patch installed - FLUX/SD3.5 FP8 models should now work on Apple Silicon")
+        except Exception as e:
+            logging.warning(f"Failed to install FP8 MPS patch: {e}")
 except:
     pass
 

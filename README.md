@@ -301,6 +301,12 @@ You can install ComfyUI in Apple Mac silicon (M1 or M2) with any recent macOS ve
 
 > **Note**: Remember to add your models, VAE, LoRAs etc. to the corresponding Comfy folders, as discussed in [ComfyUI manual installation](#manual-install-windows-linux).
 
+##### FP8 Model Support on Apple Silicon
+
+ComfyUI now includes built-in support for FP8 (8-bit floating point) models on Apple Silicon through an integrated Metal compute shader patch. This enables FP8-quantized models like FLUX and SD3.5 to run on MPS without requiring additional configuration. The patch is automatically enabled when ComfyUI detects an Apple Silicon GPU.
+
+This integration is based on the [fp8-mps-metal](https://github.com/tashiscool/fp8-mps-metal) project.
+
 #### Ascend NPUs
 
 For models compatible with Ascend Extension for PyTorch (torch_npu). To get started, ensure your environment meets the prerequisites outlined on the [installation](https://ascend.github.io/docs/sources/ascend/quick_install.html) page. Here's a step-by-step guide tailored to your platform and installation method:
